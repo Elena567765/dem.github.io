@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Новогодний кроссворд</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e5799, #207cca, #2989d8, #1e5799);
+      color: #333;
+      padding: 20px;
+      text-align: center;
+      margin: 0;
+    }
+    h1 {
+      color: #ffd700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.92);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .crossword {
+      display: inline-block;
+      margin: 20px 0;
+    }
+    table {
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    td {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #2c3e50;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: bold;
+      font-size: 18px;
+      background-color: #f8f9fa;
+      color: #2c3e50;
+    }
+    .black {
+      background-color: #2c3e50 !important;
+    }
+    .questions {
+      margin-top: 25px;
+      text-align: left;
+      padding: 15px;
+      background-color: #f1f8ff;
+      border-radius: 10px;
+      border-left: 5px solid #cc0000;
+    }
+    .questions h2 {
+      color: #cc0000;
+      margin-top: 0;
+    }
+    .questions ul {
+      padding-left: 20px;
+    }
+    .questions li {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    footer {
+      margin-top: 20px;
+      color: #f1c40f;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎄 Новогодний кроссворд 🎄</h1>
+
+    <div class="crossword">
+      <table>
+        <!-- Сетка 15×15 -->
+        <tr><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td>с</td><td>а</td><td>н</td><td>и</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td>с</td><td class="black"></td><td>д</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td>у</td><td>з</td><td>о</td><td>р</td><td>е</td><td class="black"></td><td class="black"></td><td class="black"></td><td>л</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td>д</td><td class="black"></td><td class="black"></td><td class="black"></td><td>е</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td>п</td><td class="black"></td><td>м</td><td>о</td><td>р</td><td>о</td><td>з</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td>р</td><td class="black"></td><td>о</td><td class="black"></td><td class="black"></td><td class="black"></td><td>с</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td>я</td><td class="black"></td><td>з</td><td class="black"></td><td class="black"></td><td class="black"></td><td>н</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td>н</td><td class="black"></td><td>л</td><td>е</td><td>д</td><td class="black"></td><td>е</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td>и</td><td class="black"></td><td>е</td><td class="black"></td><td class="black"></td><td class="black"></td><td>г</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td>к</td><td class="black"></td><td>л</td><td>е</td><td>д</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td>к</td><td class="black"></td><td class="black"></td><td class="black"></td><td>о</td><td>л</td><td>е</td><td>н</td><td>и</td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td>а</td><td class="black"></td><td class="black"></td><td class="black"></td><td>л</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td>а</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td>ш</td><td>а</td><td>р</td><td>ф</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td>т</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+        <tr><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td><td class="black"></td></tr>
+      </table>
+    </div>
+
+    <div class="questions">
+      <h2>Вопросы</h2>
+      <p><strong>По горизонтали:</strong></p>
+      <ul>
+        <li>1. Транспорт Деда Мороза — <em>(4 буквы)</em></li>
+        <li>2. Съедобное украшение из теста — <em>(6 букв)</em></li>
+        <li>3. Замёрзшая вода — <em>(3 буквы)</em></li>
+        <li>4. Узор на окне зимой — <em>(4 буквы)</em></li>
+        <li>5. Тёплый аксессуар на шее — <em>(4 буквы)</em></li>
+        <li>6. Праздничное дерево — <em>(4 буквы)</em></li>
+        <li>7. Популярный новогодний салат — <em>(5 букв)</em></li>
+      </ul>
+      <p><strong>По вертикали:</strong></p>
+      <ul>
+        <li>8. Главный зимний волшебник — <em>(8 букв: "дедмороз")</em></li>
+        <li>9. Животные, впряженные в сани — <em>(5 букв)</em></li>
+        <li>10. Погодное явление из белых хлопьев — <em>(4 буквы)</em></li>
+      </ul>
+    </div>
+
+    <footer>
+      С Новым Годом! 🎅❄️
+    </footer>
+  </div>
+
+</body>
+</html>
