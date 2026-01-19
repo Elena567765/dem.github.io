@@ -1,9 +1,13 @@
-body{
-     background-color: #d2b48c;
-	 margin-left: 20%;
-	 margin-right: 20%;
-	 border: 2px dotted black;
- 	 padding: 10px 10px 10px 10px;
-	 font-family: sans serif;
-  } 
+ body {
+    background-color: #e6f7ff; /* светло-голубой фон */
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+}
