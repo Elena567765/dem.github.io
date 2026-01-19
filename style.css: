@@ -1,5 +1,5 @@
  body {
-    background-color: #e6f7ff; /* коричнево-оранжевый фон */
+    background-color: #e6f7ff; /* светло-голубой фон */
     margin: 0;
     padding: 20px;
     font-family: Arial, sans-serif;
