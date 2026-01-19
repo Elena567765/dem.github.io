@@ -1,13 +1,56 @@
- body {
-    background-color: #e6f7ff; /* светло-голубой фон */
-    margin: 0;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
+/* ==UserStyle==
+@name         GitHub Non-White Background
+@namespace    github.com/userstyles
+@version      1.0.0
+@description  Заменяет белый фон GitHub на тёмно-серый
+@author       You
+==/UserStyle== */
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px 0;
+@-moz-document domain("github.com") {
+  :root {
+    --bg-color: #1e1e1e !important;
+    --fg-color: #e6e6e6 !important;
+  }
+
+  body,
+  .application-main,
+  #dashboard,
+  .page-responsive,
+  .container-xl,
+  .repository-content,
+  .Box,
+  .Box-header,
+  .Box-body,
+  .UnderlineNav,
+  .UnderlineNav-item,
+  .Header,
+  .Header-link,
+  .Header-search-input,
+  .form-control,
+  .btn {
+    background-color: var(--bg-color) !important;
+    color: var(--fg-color) !important;
+  }
+
+  /* Ссылки */
+  a {
+    color: #58a6ff !important;
+  }
+
+  /* Кнопки — оставить читаемыми */
+  .btn-primary {
+    background-color: #238636 !important;
+    border-color: #2ea043 !important;
+  }
+
+  /* Поправка для некоторых элементов */
+  .Box-row {
+    border-bottom: 1px solid #303030 !important;
+  }
+
+  /* Убираем белые всплывающие подсказки */
+  .tooltipped::after {
+    background: #333 !important;
+    color: white !important;
+  }
 }
