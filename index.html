@@ -23,11 +23,7 @@
       --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -41,13 +37,11 @@
       background-attachment: fixed;
     }
 
-    /* ✨ Анимированный фон с бабочками */
+    /* 🦋 Фоновые бабочки */
     .butterflies-bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
@@ -64,27 +58,17 @@
     }
 
     @keyframes butterflyFloat {
-      0%, 100% { 
-        transform: translateY(110vh) rotate(0deg) scale(0.8); 
-        opacity: 0; 
-      }
+      0%, 100% { transform: translateY(110vh) rotate(0deg) scale(0.8); opacity: 0; }
       10% { opacity: 0.7; }
-      50% { 
-        transform: translateY(40vh) rotate(180deg) scale(1.1); 
-        opacity: 0.9;
-      }
+      50% { transform: translateY(40vh) rotate(180deg) scale(1.1); opacity: 0.9; }
       90% { opacity: 0.7; }
-      100% { 
-        transform: translateY(-120px) rotate(360deg) scale(0.9); 
-        opacity: 0; 
-      }
+      100% { transform: translateY(-120px) rotate(360deg) scale(0.9); opacity: 0; }
     }
 
-    /* ✨ Частицы-искорки */
+    /* ✨ Искорки */
     .sparkle {
       position: absolute;
-      width: 4px;
-      height: 4px;
+      width: 4px; height: 4px;
       background: white;
       border-radius: 50%;
       pointer-events: none;
@@ -99,7 +83,6 @@
       100% { transform: scale(1.5); opacity: 0; }
     }
 
-    /* Контейнер */
     .container {
       max-width: 850px;
       margin: 0 auto;
@@ -107,7 +90,6 @@
       z-index: 1;
     }
 
-    /* Шапка с эффектом свечения */
     header {
       text-align: center;
       padding: 50px 20px 40px;
@@ -118,11 +100,9 @@
     header::before {
       content: '';
       position: absolute;
-      top: -20px;
-      left: 50%;
+      top: -20px; left: 50%;
       transform: translateX(-50%);
-      width: 200px;
-      height: 200px;
+      width: 200px; height: 200px;
       background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
       animation: pulse 4s infinite ease-in-out;
       z-index: -1;
@@ -161,7 +141,7 @@
       margin: 0 auto;
     }
 
-    /* 🦋 Карточки с эффектом стекла */
+    /* 🦋 Карточки */
     .entry-card {
       background: var(--card-glass);
       backdrop-filter: blur(12px);
@@ -181,9 +161,7 @@
     .entry-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--purple-heart), var(--purple-dark), var(--purple-heart));
       background-size: 200% 100%;
@@ -206,10 +184,8 @@
     .entry-card:hover::after {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(155, 89, 182, 0.1) 0%, transparent 70%);
       animation: ripple 1s ease-out;
       pointer-events: none;
@@ -249,9 +225,7 @@
       font-size: 1.05rem;
     }
 
-    .entry-content p {
-      margin-bottom: 14px;
-    }
+    .entry-content p { margin-bottom: 14px; }
 
     .entry-content a {
       color: var(--purple-heart);
@@ -269,10 +243,7 @@
     .entry-content a::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: var(--purple-light);
       border-radius: 8px;
       opacity: 0;
@@ -285,9 +256,7 @@
       transform: translateX(4px);
     }
 
-    .entry-content a:hover::before {
-      opacity: 1;
-    }
+    .entry-content a:hover::before { opacity: 1; }
 
     .entry-content a::after {
       content: '✨';
@@ -302,7 +271,6 @@
       transform: translateX(0);
     }
 
-    /* Код и технические блоки */
     .code-block, .metrics-block {
       background: linear-gradient(135deg, rgba(232, 218, 239, 0.7), rgba(210, 180, 224, 0.5));
       border-radius: 16px;
@@ -319,8 +287,7 @@
     .code-block::before, .metrics-block::before {
       content: '💜';
       position: absolute;
-      top: 8px;
-      right: 12px;
+      top: 8px; right: 12px;
       font-size: 1.2rem;
       opacity: 0.5;
       animation: pulse 2s infinite;
@@ -330,7 +297,6 @@
       background: linear-gradient(135deg, rgba(248, 244, 252, 0.9), rgba(240, 230, 245, 0.85));
     }
 
-    /* Теги и бейджи с анимацией */
     .badge {
       display: inline-block;
       background: linear-gradient(135deg, var(--purple-heart), var(--purple-dark));
@@ -349,18 +315,13 @@
     .badge::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: 0.5s;
     }
 
-    .badge:hover::before {
-      left: 100%;
-    }
-
+    .badge:hover::before { left: 100%; }
     .badge:hover {
       transform: translateY(-2px) scale(1.05);
       box-shadow: 0 6px 20px rgba(108, 52, 131, 0.45);
@@ -375,7 +336,6 @@
       box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
     }
 
-    /* Цитаты с эффектом */
     blockquote {
       border-left: 5px solid var(--purple-heart);
       padding: 20px 24px;
@@ -391,15 +351,13 @@
     blockquote::before {
       content: '"';
       position: absolute;
-      top: -10px;
-      left: 15px;
+      top: -10px; left: 15px;
       font-size: 3rem;
       color: var(--purple-heart);
       opacity: 0.3;
       font-family: Georgia, serif;
     }
 
-    /* Медиа с эффектами */
     video, img {
       max-width: 100%;
       border-radius: 20px;
@@ -416,7 +374,6 @@
       box-shadow: var(--shadow-hover), 0 0 40px rgba(155, 89, 182, 0.4);
     }
 
-    /* Футер */
     footer {
       text-align: center;
       padding: 50px 20px 70px;
@@ -428,11 +385,9 @@
     footer::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 50%;
+      top: 0; left: 50%;
       transform: translateX(-50%);
-      width: 300px;
-      height: 1px;
+      width: 300px; height: 1px;
       background: linear-gradient(90deg, transparent, var(--purple-heart), transparent);
     }
 
@@ -447,32 +402,18 @@
     footer a::after {
       content: '';
       position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
       background: var(--purple-dark);
       transition: var(--transition);
     }
 
-    footer a:hover {
-      color: var(--purple-dark);
-    }
+    footer a:hover { color: var(--purple-dark); }
+    footer a:hover::after { width: 100%; }
 
-    footer a:hover::after {
-      width: 100%;
-    }
-
-    /* Анимация появления */
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      from { opacity: 0; transform: translateY(30px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .entry-card {
@@ -481,13 +422,10 @@
       opacity: 0;
     }
 
-    /* Кнопка "Наверх" с эффектом */
     .scroll-top {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 56px;
-      height: 56px;
+      bottom: 28px; right: 28px;
+      width: 56px; height: 56px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--purple-heart), var(--purple-dark));
       color: white;
@@ -526,13 +464,10 @@
       transform: translateY(-2px) scale(0.98);
     }
 
-    /* ✨ Эффект параллакса для фона */
     .parallax-layer {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
       background: radial-gradient(ellipse at bottom, rgba(155, 89, 182, 0.08) 0%, transparent 60%);
@@ -544,40 +479,17 @@
       100% { transform: translateY(-50px) rotate(2deg); }
     }
 
-    /* Адаптивность */
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.3rem;
-      }
-      
-      header .subtitle {
-        font-size: 1.05rem;
-      }
-      
-      .entry-card {
-        padding: 22px 18px;
-        border-radius: 20px;
-      }
-      
-      .code-block, .metrics-block {
-        font-size: 0.88rem;
-        padding: 14px;
-      }
-      
-      .scroll-top {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        bottom: 20px;
-        right: 20px;
-      }
+      header h1 { font-size: 2.3rem; }
+      header .subtitle { font-size: 1.05rem; }
+      .entry-card { padding: 22px 18px; border-radius: 20px; }
+      .code-block, .metrics-block { font-size: 0.88rem; padding: 14px; }
+      .scroll-top { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 20px; }
     }
 
-    /* ✨ Интерактивные элементы */
     .interactive-hint {
       position: fixed;
-      bottom: 90px;
-      left: 50%;
+      bottom: 90px; left: 50%;
       transform: translateX(-50%);
       background: var(--card-glass);
       backdrop-filter: blur(10px);
@@ -597,13 +509,8 @@
       50% { opacity: 1; transform: translateX(-50%) scale(1.03); }
     }
 
-    @media (max-width: 768px) {
-      .interactive-hint {
-        display: none;
-      }
-    }
+    @media (max-width: 768px) { .interactive-hint { display: none; } }
 
-    /* 🦋 Анимация при наведении на карточку */
     .entry-card:hover .entry-date::before {
       animation: flutterFast 0.5s infinite ease-in-out;
     }
@@ -613,7 +520,6 @@
       50% { transform: rotate(8deg) scale(1.15); }
     }
 
-    /* Ссылки с плавным подчеркиванием */
     .fancy-link {
       position: relative;
       display: inline-block;
@@ -622,10 +528,8 @@
     .fancy-link::after {
       content: '';
       position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 100%;
-      height: 2px;
+      bottom: -3px; left: 0;
+      width: 100%; height: 2px;
       background: linear-gradient(90deg, var(--purple-heart), var(--purple-dark));
       transform: scaleX(0);
       transform-origin: right;
@@ -639,23 +543,33 @@
   </style>
 </head>
 <body>
-  <!-- 🦋 Фоновые бабочки -->
   <div class="butterflies-bg" id="butterfliesBg"></div>
-  
-  <!-- ✨ Параллакс слой -->
   <div class="parallax-layer"></div>
 
   <div class="container">
     
-    <!-- Шапка -->
     <header>
       <h1>💜 Мой цифровой дневник</h1>
       <p class="subtitle">Записи, проекты и маленькие победы ✨</p>
     </header>
 
-    <!-- Записи -->
     <main>
+      <!-- 📅 Записи отсортированы: от новых к старым -->
+      
       <article class="entry-card" style="--i: 1">
+        <div class="entry-date">12 мая 2026</div>
+        <div class="entry-content">
+          <p>🤖 <strong>Обучение модели</strong></p>
+          <div class="metrics-block">
+            <p>7. Каналы связи (телефонные, оптоволоконные, спутниковые и т. д.) позволяют: <strong>2) передавать информацию</strong></p>
+            <p>8. В информатике необходимо уметь определять количество информации. Какой подход к определению понятия «информация» для этого используется?<br>
+            <strong>4) вероятностный, информация является мерой уменьшения неопределённости</strong></p>
+            <p>9. В информатике количество информации определяется как: <strong>3) мера уменьшения неопределённости</strong></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry-card" style="--i: 2">
         <div class="entry-date">5 мая 2026</div>
         <div class="entry-content">
           <p>📊 <strong>Работа с данными</strong></p>
@@ -663,21 +577,21 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 2">
+      <article class="entry-card" style="--i: 3">
         <div class="entry-date">27 апреля 2026</div>
         <div class="entry-content">
           <a href="Без имени 3.ods" class="fancy-link">📁 Таблица 2</a>
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 3">
+      <article class="entry-card" style="--i: 4">
         <div class="entry-date">22 апреля 2026</div>
         <div class="entry-content">
           <a href="лист 1.ods" class="fancy-link">📁 Основная таблица</a>
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 4">
+      <article class="entry-card" style="--i: 5">
         <div class="entry-date">8 апреля 2026</div>
         <div class="entry-content">
           <p>🎨 <strong>Проект</strong></p>
@@ -685,7 +599,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 5">
+      <article class="entry-card" style="--i: 6">
         <div class="entry-date">1 апреля 2026</div>
         <div class="entry-content">
           <p>🤖 <strong>Обучение модели</strong></p>
@@ -696,7 +610,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 6">
+      <article class="entry-card" style="--i: 7">
         <div class="entry-date">21 марта 2026</div>
         <div class="entry-content">
           <p>🎯 <strong>Результаты классификации</strong></p>
@@ -712,7 +626,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 7">
+      <article class="entry-card" style="--i: 8">
         <div class="entry-date">16 марта 2026</div>
         <div class="entry-content">
           <p>📚 <strong>Прогноз успеваемости</strong></p>
@@ -730,7 +644,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 8">
+      <article class="entry-card" style="--i: 9">
         <div class="entry-date">25 февраля 2026</div>
         <div class="entry-content">
           <p>🤖 <strong>Бот-помощник</strong></p>
@@ -742,7 +656,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 9">
+      <article class="entry-card" style="--i: 10">
         <div class="entry-date">18 февраля 2026</div>
         <div class="entry-content">
           <p>👟 <strong>Распознавание изображений</strong></p>
@@ -755,7 +669,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 10">
+      <article class="entry-card" style="--i: 11">
         <div class="entry-date">20 января 2026</div>
         <div class="entry-content">
           <p>🔐 <strong>Криптография: RSA</strong></p>
@@ -768,7 +682,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 11">
+      <article class="entry-card" style="--i: 12">
         <div class="entry-date">19 января 2026</div>
         <div class="entry-content">
           <p>🔤 <strong>Шифр Цезаря</strong></p>
@@ -782,7 +696,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 12">
+      <article class="entry-card" style="--i: 13">
         <div class="entry-date">14 января 2026</div>
         <div class="entry-content">
           <p>✉️ <strong>Связаться со мной</strong></p>
@@ -791,7 +705,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 13">
+      <article class="entry-card" style="--i: 14">
         <div class="entry-date">20 декабря 2025</div>
         <div class="entry-content">
           <p>🎄 <strong>Рождество</strong></p>
@@ -803,7 +717,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 14">
+      <article class="entry-card" style="--i: 15">
         <div class="entry-date">1 декабря 2025</div>
         <div class="entry-content">
           <img src="https://raw.githubusercontent.com/Elena567765/dem.github.io/main/Icons/Iconsfree-icon-christmas-tree-4060984.png" alt="🎄 Новый год">
@@ -811,7 +725,7 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 15">
+      <article class="entry-card" style="--i: 16">
         <div class="entry-date">15 октября 2025</div>
         <div class="entry-content">
           <p>🎁 <strong>Новогодние кроссворды</strong></p>
@@ -819,31 +733,16 @@
         </div>
       </article>
 
-      <article class="entry-card" style="--i: 16">
-        <div class="entry-date">1 сентября</div>
+      <article class="entry-card" style="--i: 17">
+        <div class="entry-date">1 сентября 2025</div>
         <div class="entry-content">
           <blockquote>«Путешествие в тысячу миль начинается с одного шага» — Лао Цзы 💜</blockquote>
           <p>Оставляю в прошлом скучную локальную файловую систему ради Всемирной паутины. ✨</p>
         </div>
       </article>
 
-      <!-- Добавленная запись от 12 мая -->
-      <article class="entry-card" style="--i: 17">
-        <div class="entry-date">12 мая 2026</div>
-        <div class="entry-content">
-          <p>🤖 <strong>Обучение модели</strong></p>
-          <div class="metrics-block">
-            <p>7. Каналы связи (телефонные, оптоволоконные, спутниковые и т. д.) позволяют: <strong>2) передавать информацию</strong></p>
-            <p>8. В информатике необходимо уметь определять количество информации. Какой подход к определению понятия «информация» для этого используется?<br>
-            <strong>4) вероятностный, информация является мерой уменьшения неопределённости</strong></p>
-            <p>9. В информатике количество информации определяется как: <strong>3) мера уменьшения неопределённости</strong></p>
-          </div>
-        </div>
-      </article>
-
     </main>
 
-    <!-- Футер -->
     <footer>
       <p>Сделано с 💜 и заботой | <a href="https://www.flaticon.com/ru/free-icons/" target="_blank">Иконки от Freepik</a></p>
       <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.85;">© 2025–2026 Elena</p>
@@ -851,14 +750,11 @@
 
   </div>
 
-  <!-- Кнопка "Наверх" -->
   <button class="scroll-top" id="scrollTop" aria-label="Наверх">🦋</button>
-  
-  <!-- Подсказка -->
   <div class="interactive-hint">✨ Наведите на карточку для эффекта!</div>
 
   <script>
-    // 🦋 Генерация фоновых бабочек
+    // 🦋 Бабочки
     const butterfliesContainer = document.getElementById('butterfliesBg');
     const butterflySymbols = ['🦋', '💜', '✨', '🔮', '💫', '🌸'];
     
@@ -874,11 +770,9 @@
       butterfliesContainer.appendChild(butterfly);
     }
 
-    // ✨ Генерация искорок при движении мыши
+    // ✨ Искорки
     document.addEventListener('mousemove', (e) => {
-      if (Math.random() > 0.92) {
-        createSparkle(e.pageX, e.pageY);
-      }
+      if (Math.random() > 0.92) createSparkle(e.pageX, e.pageY);
     });
 
     function createSparkle(x, y) {
@@ -887,7 +781,6 @@
       sparkle.style.left = x + 'px';
       sparkle.style.top = y + 'px';
       document.body.appendChild(sparkle);
-      
       setTimeout(() => sparkle.remove(), 3000);
     }
 
@@ -904,15 +797,13 @@
 
     scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      
-      // Эффект при нажатии
       createSparkle(
         scrollTopBtn.getBoundingClientRect().left + 28,
         scrollTopBtn.getBoundingClientRect().top + 28
       );
     });
 
-    // Плавное появление карточек при прокрутке
+    // Появление карточек
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -927,7 +818,7 @@
       observer.observe(card);
     });
 
-    // Скрыть подсказку после первого взаимодействия
+    // Скрыть подсказку
     const hint = document.querySelector('.interactive-hint');
     document.addEventListener('click', () => {
       if (hint) {
@@ -937,7 +828,7 @@
       }
     }, { once: true });
 
-    // Эффект параллакса для бабочек при прокрутке
+    // Параллакс бабочек
     window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
       document.querySelectorAll('.butterfly').forEach((butterfly, index) => {
@@ -946,10 +837,9 @@
       });
     });
 
-    // Добавляем интерактивность к карточкам
+    // Интерактив карточек
     document.querySelectorAll('.entry-card').forEach(card => {
       card.addEventListener('mouseenter', () => {
-        // Создаём несколько искорок вокруг карточки
         const rect = card.getBoundingClientRect();
         for (let i = 0; i < 3; i++) {
           setTimeout(() => {
