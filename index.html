@@ -4,18 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>💜 Мой цифровой дневник</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
   <style>
     :root {
       --purple-heart: #9b59b6;
       --purple-light: #e8daef;
       --purple-dark: #6c3483;
-      --bg-gradient: linear-gradient(135deg, #f5e6f7 0%, #e8daef 50%, #d2b48c 100%);
-      --card-bg: rgba(255, 255, 255, 0.92);
+      --purple-deep: #4a235a;
+      --purple-glow: rgba(155, 89, 182, 0.4);
+      --bg-gradient: linear-gradient(135deg, #f5e6f7 0%, #e8daef 30%, #d2b4e0 60%, #c39bd3 100%);
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-glass: rgba(255, 255, 255, 0.65);
       --text-primary: #2c1b33;
       --text-secondary: #5d4a66;
-      --shadow: 0 8px 32px rgba(155, 89, 182, 0.15);
-      --shadow-hover: 0 12px 40px rgba(155, 89, 182, 0.25);
+      --shadow: 0 8px 32px rgba(155, 89, 182, 0.2);
+      --shadow-hover: 0 20px 60px rgba(108, 52, 131, 0.35);
+      --shadow-glow: 0 0 30px rgba(155, 89, 182, 0.25);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     * {
@@ -28,15 +33,16 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg-gradient);
       color: var(--text-primary);
-      line-height: 1.6;
+      line-height: 1.7;
       padding: 20px;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
+      background-attachment: fixed;
     }
 
-    /* 💜 Плавающие сердечки на фоне */
-    .hearts-bg {
+    /* ✨ Анимированный фон с бабочками */
+    .butterflies-bg {
       position: fixed;
       top: 0;
       left: 0;
@@ -47,65 +53,129 @@
       overflow: hidden;
     }
 
-    .heart {
+    .butterfly {
       position: absolute;
-      font-size: 1.2rem;
-      color: var(--purple-heart);
-      opacity: 0.15;
-      animation: float 20s infinite ease-in-out;
+      font-size: 1.5rem;
+      opacity: 0.7;
+      animation: butterflyFloat 25s infinite ease-in-out;
+      transform-origin: center;
+      filter: drop-shadow(0 0 8px var(--purple-glow));
       user-select: none;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.15; }
-      90% { opacity: 0.15; }
-      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    @keyframes butterflyFloat {
+      0%, 100% { 
+        transform: translateY(110vh) rotate(0deg) scale(0.8); 
+        opacity: 0; 
+      }
+      10% { opacity: 0.7; }
+      50% { 
+        transform: translateY(40vh) rotate(180deg) scale(1.1); 
+        opacity: 0.9;
+      }
+      90% { opacity: 0.7; }
+      100% { 
+        transform: translateY(-120px) rotate(360deg) scale(0.9); 
+        opacity: 0; 
+      }
+    }
+
+    /* ✨ Частицы-искорки */
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkle 3s infinite ease-out;
+      opacity: 0;
+      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(0); opacity: 1; }
+      50% { opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
     }
 
     /* Контейнер */
     .container {
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
 
-    /* Шапка */
+    /* Шапка с эффектом свечения */
     header {
       text-align: center;
-      padding: 40px 20px;
-      margin-bottom: 30px;
+      padding: 50px 20px 40px;
+      margin-bottom: 35px;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
+      animation: pulse 4s infinite ease-in-out;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+      50% { transform: translateX(-50%) scale(1.2); opacity: 0.3; }
     }
 
     header h1 {
-      font-size: 2.2rem;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
       font-weight: 700;
       color: var(--purple-dark);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
+      text-shadow: 0 2px 10px rgba(155, 89, 182, 0.3);
+      animation: titleGlow 3s infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      from { text-shadow: 0 2px 10px rgba(155, 89, 182, 0.3); }
+      to { text-shadow: 0 4px 25px rgba(155, 89, 182, 0.6), 0 0 40px rgba(232, 218, 239, 0.8); }
     }
 
     header .subtitle {
       color: var(--text-secondary);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    /* Карточки записей */
+    /* 🦋 Карточки с эффектом стекла */
     .entry-card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 24px;
-      margin-bottom: 24px;
+      background: var(--card-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 28px;
       box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       position: relative;
       overflow: hidden;
+      border-left: 4px solid transparent;
+      border-image: linear-gradient(180deg, var(--purple-heart), var(--purple-dark)) 1;
     }
 
     .entry-card::before {
@@ -114,63 +184,117 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--purple-heart), var(--purple-dark));
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple-heart), var(--purple-dark), var(--purple-heart));
+      background-size: 200% 100%;
+      animation: gradientMove 3s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
     }
 
     .entry-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: var(--shadow-hover), var(--shadow-glow);
       border-color: var(--purple-light);
+      z-index: 2;
+    }
+
+    .entry-card:hover::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(155, 89, 182, 0.1) 0%, transparent 70%);
+      animation: ripple 1s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to { transform: scale(1.5); opacity: 0; }
     }
 
     .entry-date {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       color: var(--purple-dark);
       font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
+      font-size: 1rem;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
       border-bottom: 1px dashed var(--purple-light);
+      position: relative;
     }
 
     .entry-date::before {
-      content: '💜';
-      font-size: 1rem;
+      content: '🦋';
+      font-size: 1.2rem;
+      animation: flutter 2s infinite ease-in-out;
+      display: inline-block;
+    }
+
+    @keyframes flutter {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
     }
 
     .entry-content {
       color: var(--text-primary);
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     .entry-content p {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .entry-content a {
       color: var(--purple-heart);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s;
+      transition: var(--transition);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
+      position: relative;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    .entry-content a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--purple-light);
+      border-radius: 8px;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: -1;
     }
 
     .entry-content a:hover {
       color: var(--purple-dark);
-      text-decoration: underline;
+      transform: translateX(4px);
+    }
+
+    .entry-content a:hover::before {
+      opacity: 1;
     }
 
     .entry-content a::after {
-      content: '→';
-      font-size: 0.9em;
+      content: '✨';
+      font-size: 0.8em;
       opacity: 0;
-      transform: translateX(-4px);
-      transition: all 0.2s;
+      transform: translateX(-6px);
+      transition: var(--transition);
     }
 
     .entry-content a:hover::after {
@@ -180,126 +304,210 @@
 
     /* Код и технические блоки */
     .code-block, .metrics-block {
-      background: var(--purple-light);
-      border-radius: 12px;
-      padding: 16px;
-      margin: 12px 0;
+      background: linear-gradient(135deg, rgba(232, 218, 239, 0.7), rgba(210, 180, 224, 0.5));
+      border-radius: 16px;
+      padding: 18px;
+      margin: 14px 0;
       font-family: 'Fira Code', 'Courier New', monospace;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       overflow-x: auto;
       border-left: 4px solid var(--purple-heart);
+      box-shadow: inset 0 0 20px rgba(155, 89, 182, 0.1);
+      position: relative;
+    }
+
+    .code-block::before, .metrics-block::before {
+      content: '💜';
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 1.2rem;
+      opacity: 0.5;
+      animation: pulse 2s infinite;
     }
 
     .metrics-block {
-      background: linear-gradient(135deg, #f8f4fc, #f0e6f5);
+      background: linear-gradient(135deg, rgba(248, 244, 252, 0.9), rgba(240, 230, 245, 0.85));
     }
 
-    /* Теги и бейджи */
+    /* Теги и бейджи с анимацией */
     .badge {
       display: inline-block;
-      background: var(--purple-heart);
+      background: linear-gradient(135deg, var(--purple-heart), var(--purple-dark));
       color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
+      padding: 5px 14px;
+      border-radius: 25px;
+      font-size: 0.82rem;
       font-weight: 500;
-      margin: 4px 2px;
+      margin: 5px 3px;
+      box-shadow: 0 4px 12px rgba(108, 52, 131, 0.3);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
     }
 
-    .badge.success { background: #27ae60; }
-    .badge.warning { background: #f39c12; }
+    .badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
 
-    /* Цитаты */
+    .badge:hover::before {
+      left: 100%;
+    }
+
+    .badge:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(108, 52, 131, 0.45);
+    }
+
+    .badge.success { 
+      background: linear-gradient(135deg, #27ae60, #1e8449); 
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+    }
+    .badge.warning { 
+      background: linear-gradient(135deg, #f39c12, #d68910); 
+      box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+    }
+
+    /* Цитаты с эффектом */
     blockquote {
-      border-left: 4px solid var(--purple-heart);
-      padding: 16px 20px;
-      margin: 16px 0;
-      background: var(--purple-light);
-      border-radius: 0 12px 12px 0;
+      border-left: 5px solid var(--purple-heart);
+      padding: 20px 24px;
+      margin: 18px 0;
+      background: linear-gradient(135deg, rgba(232, 218, 239, 0.6), rgba(210, 180, 224, 0.4));
+      border-radius: 0 16px 16px 0;
       font-style: italic;
       color: var(--text-secondary);
+      position: relative;
+      box-shadow: 0 4px 15px rgba(155, 89, 182, 0.15);
     }
 
-    /* Медиа */
+    blockquote::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      font-size: 3rem;
+      color: var(--purple-heart);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+    }
+
+    /* Медиа с эффектами */
     video, img {
       max-width: 100%;
-      border-radius: 16px;
-      margin: 16px 0;
-      box-shadow: var(--shadow);
+      border-radius: 20px;
+      margin: 18px 0;
+      box-shadow: var(--shadow), var(--shadow-glow);
+      transition: var(--transition);
+      border: 3px solid transparent;
+      background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                  linear-gradient(135deg, var(--purple-heart), var(--purple-dark)) border-box;
+    }
+
+    video:hover, img:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover), 0 0 40px rgba(155, 89, 182, 0.4);
     }
 
     /* Футер */
     footer {
       text-align: center;
-      padding: 40px 20px 60px;
+      padding: 50px 20px 70px;
       color: var(--text-secondary);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--purple-heart), transparent);
     }
 
     footer a {
       color: var(--purple-heart);
       text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    footer a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--purple-dark);
+      transition: var(--transition);
     }
 
     footer a:hover {
-      text-decoration: underline;
+      color: var(--purple-dark);
+    }
+
+    footer a:hover::after {
+      width: 100%;
     }
 
     /* Анимация появления */
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px) scale(0.98);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
 
     .entry-card {
-      animation: fadeInUp 0.5s ease forwards;
-      animation-delay: calc(var(--i, 0) * 0.1s);
+      animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation-delay: calc(var(--i, 0) * 0.12s);
+      opacity: 0;
     }
 
-    /* Адаптивность */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      
-      .entry-card {
-        padding: 20px 16px;
-        border-radius: 16px;
-      }
-      
-      .code-block {
-        font-size: 0.85rem;
-        padding: 12px;
-      }
-    }
-
-    /* Кнопка "Наверх" */
+    /* Кнопка "Наверх" с эффектом */
     .scroll-top {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 50px;
-      height: 50px;
+      bottom: 28px;
+      right: 28px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: var(--purple-heart);
+      background: linear-gradient(135deg, var(--purple-heart), var(--purple-dark));
       color: white;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: all 0.3s;
+      box-shadow: var(--shadow), 0 0 25px rgba(155, 89, 182, 0.5);
+      transition: var(--transition);
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
 
     .scroll-top.visible {
@@ -308,26 +516,134 @@
     }
 
     .scroll-top:hover {
-      background: var(--purple-dark);
-      transform: translateY(-4px);
+      background: linear-gradient(135deg, var(--purple-dark), #5b2c6f);
+      transform: translateY(-6px) scale(1.1);
+      box-shadow: var(--shadow-hover), 0 0 40px rgba(155, 89, 182, 0.7);
+      animation: none;
+    }
+
+    .scroll-top:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+
+    /* ✨ Эффект параллакса для фона */
+    .parallax-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(ellipse at bottom, rgba(155, 89, 182, 0.08) 0%, transparent 60%);
+      animation: parallaxFloat 20s infinite linear;
+    }
+
+    @keyframes parallaxFloat {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-50px) rotate(2deg); }
+    }
+
+    /* Адаптивность */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+      
+      header .subtitle {
+        font-size: 1.05rem;
+      }
+      
+      .entry-card {
+        padding: 22px 18px;
+        border-radius: 20px;
+      }
+      
+      .code-block, .metrics-block {
+        font-size: 0.88rem;
+        padding: 14px;
+      }
+      
+      .scroll-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    /* ✨ Интерактивные элементы */
+    .interactive-hint {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--card-glass);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: var(--purple-dark);
+      box-shadow: var(--shadow);
+      animation: hintPulse 3s infinite;
+      z-index: 50;
+      pointer-events: none;
+      border: 1px solid rgba(155, 89, 182, 0.3);
+    }
+
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.03); }
+    }
+
+    @media (max-width: 768px) {
+      .interactive-hint {
+        display: none;
+      }
+    }
+
+    /* 🦋 Анимация при наведении на карточку */
+    .entry-card:hover .entry-date::before {
+      animation: flutterFast 0.5s infinite ease-in-out;
+    }
+
+    @keyframes flutterFast {
+      0%, 100% { transform: rotate(-8deg) scale(1.1); }
+      50% { transform: rotate(8deg) scale(1.15); }
+    }
+
+    /* Ссылки с плавным подчеркиванием */
+    .fancy-link {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .fancy-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--purple-heart), var(--purple-dark));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    
+    .fancy-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
   </style>
 </head>
 <body>
-   <article class="entry-card" style="--i: 5">
-        <div class="entry-date">12 мая 2026</div>
-        <div class="entry-content">
-          <p>🤖 <strong>Обучение модели</strong></p>
-          <div class="metrics-block">
-            <p>7. Каналы связи (телефонные, оптоволоконные, спутниковые и т. д.) позволяют:2) передавать информацию</p>
-            <p>8. В информатике необходимо уметь определять количество информации. Какой подход к определению понятия «информация» для этого используется?
-4) вероятностный, информация является мерой уменьшения неопределённости</p>
-            <p>9. В информатике количество информации определяется как:3) мера уменьшения неопределённости</p>
-          </div>
-        </div>
-      </article>
-  <!-- 💜 Фоновые сердечки -->
-  <div class="hearts-bg" id="heartsBg"></div>
+  <!-- 🦋 Фоновые бабочки -->
+  <div class="butterflies-bg" id="butterfliesBg"></div>
+  
+  <!-- ✨ Параллакс слой -->
+  <div class="parallax-layer"></div>
 
   <div class="container">
     
@@ -339,26 +655,25 @@
 
     <!-- Записи -->
     <main>
-
       <article class="entry-card" style="--i: 1">
         <div class="entry-date">5 мая 2026</div>
         <div class="entry-content">
           <p>📊 <strong>Работа с данными</strong></p>
-          <a href="числа таблица крассворд 106.ods">📁 Таблица 3 — кроссворд с числами</a>
+          <a href="числа таблица крассворд 106.ods" class="fancy-link">📁 Таблица 3 — кроссворд с числами</a>
         </div>
       </article>
 
       <article class="entry-card" style="--i: 2">
         <div class="entry-date">27 апреля 2026</div>
         <div class="entry-content">
-          <a href="Без имени 3.ods">📁 Таблица 2</a>
+          <a href="Без имени 3.ods" class="fancy-link">📁 Таблица 2</a>
         </div>
       </article>
 
       <article class="entry-card" style="--i: 3">
         <div class="entry-date">22 апреля 2026</div>
         <div class="entry-content">
-          <a href="лист 1.ods">📁 Основная таблица</a>
+          <a href="лист 1.ods" class="fancy-link">📁 Основная таблица</a>
         </div>
       </article>
 
@@ -366,7 +681,7 @@
         <div class="entry-date">8 апреля 2026</div>
         <div class="entry-content">
           <p>🎨 <strong>Проект</strong></p>
-          <a href="pac.png">🖼️ Посмотреть макет</a>
+          <a href="pac.png" class="fancy-link">🖼️ Посмотреть макет</a>
         </div>
       </article>
 
@@ -471,7 +786,7 @@
         <div class="entry-date">14 января 2026</div>
         <div class="entry-content">
           <p>✉️ <strong>Связаться со мной</strong></p>
-          <p><a href="mailto:e.garkotina@mail.ru">💜 Написать мне на e.garkotina@mail.ru</a></p>
+          <p><a href="mailto:e.garkotina@mail.ru" class="fancy-link">💜 Написать мне на e.garkotina@mail.ru</a></p>
           <p><small>Домен сайта: <code>elena567765.github.io</code></small></p>
         </div>
       </article>
@@ -480,7 +795,7 @@
         <div class="entry-date">20 декабря 2025</div>
         <div class="entry-content">
           <p>🎄 <strong>Рождество</strong></p>
-          <p>Поздравление с Рождеством читайте <a href="kldla.odt">здесь 💜</a></p>
+          <p>Поздравление с Рождеством читайте <a href="kldla.odt" class="fancy-link">здесь 💜</a></p>
           <video width="100%" controls>
             <source src="vdeo.mp4" type="video/mp4">
             Ваш браузер не поддерживает видео.
@@ -492,7 +807,7 @@
         <div class="entry-date">1 декабря 2025</div>
         <div class="entry-content">
           <img src="https://raw.githubusercontent.com/Elena567765/dem.github.io/main/Icons/Iconsfree-icon-christmas-tree-4060984.png" alt="🎄 Новый год">
-          <p>✨ Поздравление с Наступающим 2026 годом читайте <a href="Congratulations2026.html">здесь 💜</a></p>
+          <p>✨ Поздравление с Наступающим 2026 годом читайте <a href="Congratulations2026.html" class="fancy-link">здесь 💜</a></p>
         </div>
       </article>
 
@@ -500,7 +815,7 @@
         <div class="entry-date">15 октября 2025</div>
         <div class="entry-content">
           <p>🎁 <strong>Новогодние кроссворды</strong></p>
-          <p>Я сделала Новогодние кроссворды для сайта <a href="https://github.com/Lilia170/dem.github.io/edit/main/index.html" title="Блог моего друга">Сайт моего друга 💜</a></p>
+          <p>Я сделала Новогодние кроссворды для сайта <a href="https://github.com/Lilia170/dem.github.io/edit/main/index.html" class="fancy-link" title="Блог моего друга">Сайт моего друга 💜</a></p>
         </div>
       </article>
 
@@ -512,40 +827,75 @@
         </div>
       </article>
 
+      <!-- Добавленная запись от 12 мая -->
+      <article class="entry-card" style="--i: 17">
+        <div class="entry-date">12 мая 2026</div>
+        <div class="entry-content">
+          <p>🤖 <strong>Обучение модели</strong></p>
+          <div class="metrics-block">
+            <p>7. Каналы связи (телефонные, оптоволоконные, спутниковые и т. д.) позволяют: <strong>2) передавать информацию</strong></p>
+            <p>8. В информатике необходимо уметь определять количество информации. Какой подход к определению понятия «информация» для этого используется?<br>
+            <strong>4) вероятностный, информация является мерой уменьшения неопределённости</strong></p>
+            <p>9. В информатике количество информации определяется как: <strong>3) мера уменьшения неопределённости</strong></p>
+          </div>
+        </div>
+      </article>
+
     </main>
 
     <!-- Футер -->
     <footer>
       <p>Сделано с 💜 и заботой | <a href="https://www.flaticon.com/ru/free-icons/" target="_blank">Иконки от Freepik</a></p>
-      <p style="margin-top: 8px; font-size: 0.9rem; opacity: 0.8;">© 2025–2026 Elena</p>
+      <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.85;">© 2025–2026 Elena</p>
     </footer>
 
   </div>
 
   <!-- Кнопка "Наверх" -->
-  <button class="scroll-top" id="scrollTop" aria-label="Наверх">↑</button>
+  <button class="scroll-top" id="scrollTop" aria-label="Наверх">🦋</button>
+  
+  <!-- Подсказка -->
+  <div class="interactive-hint">✨ Наведите на карточку для эффекта!</div>
 
   <script>
-    // 💜 Генерация фоновых сердечек
-    const heartsContainer = document.getElementById('heartsBg');
-    const heartSymbols = ['💜', '🤍', '✨', '💫', '🔮'];
+    // 🦋 Генерация фоновых бабочек
+    const butterfliesContainer = document.getElementById('butterfliesBg');
+    const butterflySymbols = ['🦋', '💜', '✨', '🔮', '💫', '🌸'];
     
-    for (let i = 0; i < 25; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-      heart.style.left = Math.random() * 100 + '%';
-      heart.style.animationDelay = Math.random() * 20 + 's';
-      heart.style.animationDuration = (15 + Math.random() * 20) + 's';
-      heart.style.fontSize = (0.8 + Math.random() * 1.5) + 'rem';
-      heartsContainer.appendChild(heart);
+    for (let i = 0; i < 30; i++) {
+      const butterfly = document.createElement('div');
+      butterfly.className = 'butterfly';
+      butterfly.textContent = butterflySymbols[Math.floor(Math.random() * butterflySymbols.length)];
+      butterfly.style.left = Math.random() * 100 + '%';
+      butterfly.style.animationDelay = Math.random() * 25 + 's';
+      butterfly.style.animationDuration = (20 + Math.random() * 30) + 's';
+      butterfly.style.fontSize = (1 + Math.random() * 1.8) + 'rem';
+      butterfly.style.zIndex = Math.floor(Math.random() * 3);
+      butterfliesContainer.appendChild(butterfly);
+    }
+
+    // ✨ Генерация искорок при движении мыши
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() > 0.92) {
+        createSparkle(e.pageX, e.pageY);
+      }
+    });
+
+    function createSparkle(x, y) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = x + 'px';
+      sparkle.style.top = y + 'px';
+      document.body.appendChild(sparkle);
+      
+      setTimeout(() => sparkle.remove(), 3000);
     }
 
     // Кнопка "Наверх"
     const scrollTopBtn = document.getElementById('scrollTop');
     
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
+      if (window.pageYOffset > 400) {
         scrollTopBtn.classList.add('visible');
       } else {
         scrollTopBtn.classList.remove('visible');
@@ -554,6 +904,12 @@
 
     scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Эффект при нажатии
+      createSparkle(
+        scrollTopBtn.getBoundingClientRect().left + 28,
+        scrollTopBtn.getBoundingClientRect().top + 28
+      );
     });
 
     // Плавное появление карточек при прокрутке
@@ -561,18 +917,50 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.style.transform = 'translateY(0) scale(1)';
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.entry-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
       observer.observe(card);
     });
-  </script>
 
+    // Скрыть подсказку после первого взаимодействия
+    const hint = document.querySelector('.interactive-hint');
+    document.addEventListener('click', () => {
+      if (hint) {
+        hint.style.opacity = '0';
+        hint.style.transform = 'translateX(-50%) translateY(20px)';
+        setTimeout(() => hint.remove(), 500);
+      }
+    }, { once: true });
+
+    // Эффект параллакса для бабочек при прокрутке
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      document.querySelectorAll('.butterfly').forEach((butterfly, index) => {
+        const speed = 0.3 + (index % 5) * 0.1;
+        butterfly.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+
+    // Добавляем интерактивность к карточкам
+    document.querySelectorAll('.entry-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        // Создаём несколько искорок вокруг карточки
+        const rect = card.getBoundingClientRect();
+        for (let i = 0; i < 3; i++) {
+          setTimeout(() => {
+            createSparkle(
+              rect.left + Math.random() * rect.width,
+              rect.top + Math.random() * rect.height
+            );
+          }, i * 100);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
